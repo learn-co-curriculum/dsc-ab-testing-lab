@@ -20,15 +20,13 @@ You've been tasked with designing an experiment to test whether a new email temp
 
 State your null hypothesis here (be sure to make it quantitative as before)
 
-h_0 : the probability of success for the new email template is .05
+h_0 : 
 
 ## Step 2: State the Alternative Hypothesis, $H_1$
 
 State your alternative hypothesis here (be sure to make it quantitative as before)
 
-h_1 : the probability of success for the new email template is > .06 
-
-(<.04 would also result in the same equations we saw previously)
+h_1 : 
 
 ## Step 3: Define Alpha and Beta
 
@@ -53,34 +51,10 @@ Is this sufficient evidence to refute the null hypothesis stated above?
 
 ```python
 #Your code for testing the null hypothesis here
-
-import scipy.stats as st
-
-def compute_n(alpha, beta, mu_0, mu_1, var):
-    z_alpha = st.norm.ppf(alpha)
-    z_beta = st.norm.ppf(beta)
-    num = ((z_alpha+z_beta)**2)*var
-    den = (mu_1 - mu_0)**2
-    return num/den
-
-alpha = .01 #Part of A/B test design
-beta = .01 #Part of A/B test design
-mu_0 = .05 #Part of A/B test design
-mu_1 = .06 #Part of A/B test design
-var = 35 *(2/35)*(1-2/35) #sample variance using binomial variance formula
-
-compute_n(alpha, beta, mu_0, mu_1, var)
 ```
 
-
-
-
-    408211.46565667057
-
-
-
 ### Your answer here: is there sufficient data to refute the null hypothesis? [Yes/No]
-No: Current calculations show we would have to conduct a much much larger sample of over 400K to achieve the desired accuracy based on our initial sample.
+
 
 ## Experimenting With New Test Designs
 If we relax alpha and beta to .05, each (opening ourselves up to a higher probability of making type I and type II errors), how much would our required sample size drop?
@@ -88,24 +62,10 @@ If we relax alpha and beta to .05, each (opening ourselves up to a higher probab
 
 ```python
 #Your code here
-alpha = .05 #Part of A/B test design
-beta = .05 #Part of A/B test design
-mu_0 = .05 #Part of A/B test design
-mu_1 = .06 #Part of A/B test design
-var = 35 *(2/35)*(1-2/35) #sample variance using binomial variance formula
-
-compute_n(alpha, beta, mu_0, mu_1, var)
 ```
 
-
-
-
-    204075.27768034008
-
-
-
 ### Your answer here: how much would required sample size drop based on the new formulation?
-The sample size would still need to be quite large; over 200K, but has been cut roughly in have by relaxing alpha and beta both .05.
+
 
 ## Summary
 
