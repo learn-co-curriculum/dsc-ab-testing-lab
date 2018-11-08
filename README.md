@@ -3,7 +3,7 @@
 
 ## Introduction
 
-In this lab, you'll go through a sample process of designing an experiment
+In this lab, you'll go through a sample process of designing an experiment.
 
 ## Objectives
 You will be able to:
