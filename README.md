@@ -20,13 +20,13 @@ You've been tasked with designing an experiment to test whether a new email temp
 
 State your null hypothesis here (be sure to make it quantitative as before)
 
-h_0 : 
+h_0 : #Your null hypothesis
 
 ## Step 2: State the Alternative Hypothesis, $H_1$
 
 State your alternative hypothesis here (be sure to make it quantitative as before)
 
-h_1 : 
+h_1 : #Your alternative hypothesis
 
 ## Step 3: Calculate n for standard alpha and power thresholds
 
@@ -37,23 +37,8 @@ To start, arbitrarily set alpha to 0.05. From this, calculate the required sampl
 
 
 ```python
-# Calculate the required sample size 
-import warnings
-warnings.filterwarnings("ignore")
-from statsmodels.stats.power import TTestIndPower, TTestPower
-power_analysis = TTestIndPower()
-mean_difference = 0.01
-sd =0.0475
-effect_size = mean_difference / sd
-power_analysis.solve_power(alpha=.05, effect_size=effect_size, power=.80, alternative='larger')
+# Calculate the required sample size
 ```
-
-
-
-
-    279.6667468021971
-
-
 
 ## Step 4: Plot Power Curves for Alternative Experiment Formulations
 
@@ -62,40 +47,13 @@ While you now know how many observations you need in order to run a t-test for t
 
 ```python
 #Your code; plot power curves for the various alpha and effect size combinations
-import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
-sns.set_style('darkgrid')
-%matplotlib inline
-
-
-sd = 0.0475
-e_sizes = [mu_delta/sd for mu_delta in [.005,.01,.02,.03]]
-fig, axes = plt.subplots(ncols=1, nrows=3, figsize=(8,15))
-for n, alpha in enumerate([.01, .05, .1]):
-    ax = axes[n]
-    power_analysis.plot_power(dep_var="nobs",
-                              nobs = np.array(range(5,500)),
-                              effect_size=e_sizes,
-                              alpha=alpha,
-                              ax=ax)
-    ax.set_title('Power of Test for alpha = {}'.format(alpha))
-    ax.set_xticks(list(range(0,500,25)))
-    ax.set_yticks(np.linspace(0,1,11))
 ```
-
-
-![png](index_files/index_7_0.png)
-
 
 # Step 5: Propose a Final Experimental Design
 
 Finally, now that you've explored some of the various sample sizes required for statistical tests of varying power, effect size and type I errors, propose an experimental designs to pitch to your boss and some of the accompanying advantages or disadvantages.
 
 ### Your answer here
-
-Answers will vary. It seems that a minimum sample size 100, to detect all but the largest effect sizes with a reasonable balance of alpha and power. After the initial roll-out, there should be sufficient evidence to determine whether further investigation is warranted.
-
 
 ## Summary
 
