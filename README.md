@@ -13,7 +13,7 @@ You will be able to:
 
 ## The Scenario
 
-You've been tasked with designing an experiment to test whether a new email template will be more effective for your company's marketing team. The current template has a 5% response rate, which has outperformed numerous other templates in the past. As a result of some very poor performance from some of these alternative templates, the company is both excited to test this new design that was developed internally, and nervous about losing sales, if it is not to work out. As a result, they are looking to determine how many individuals they will need to serve the new email template to in order to detect a 1% performance increase (or drop).
+You've been tasked with designing an experiment to test whether a new email template will be more effective for your company's marketing team. The current template has a 5% response rate (with standard deviation .0475), which has outperformed numerous other templates in the past. The company is excited to test the new design that was developed internally, but nervous about losing sales, if it is not to work out. As a result, they are looking to determine how many individuals they will need to serve the new email template to in order to detect a 1% performance increase (or decrease).
 
 
 ## Step 1: State the Null Hypothesis, $H_0$
@@ -28,43 +28,73 @@ State your alternative hypothesis here (be sure to make it quantitative as befor
 
 h_1 : 
 
-## Step 3: Define Alpha and Beta
+## Step 3: Calculate n for standard alpha and power thresholds
 
 Now define what alpha and beta you believe might be appropriate for this scenario.
-To start, we may arbitrarily set alpha and beta to .01, indicating that we wish to minimally open ourselves up to type I and type II errors. Later, we will be able to adapt these, if sample sizes turn out to be impractically large.
+To start, arbitrarily set alpha to 0.05. From this, calculate the required sample size to detect a .01 response rate difference at a power of .8.
+
+> Note: Be sure to calculate a normalized effect size using Cohen's d from the raw response rate difference.
 
 
 ```python
-alpha = .01
-beta = .01
+# Calculate the required sample size 
+import warnings
+warnings.filterwarnings("ignore")
+from statsmodels.stats.power import TTestIndPower, TTestPower
+power_analysis = TTestIndPower()
+mean_difference = 0.01
+sd =0.0475
+effect_size = mean_difference / sd
+power_analysis.solve_power(alpha=.05, effect_size=effect_size, power=.80, alternative='larger')
 ```
 
-## Step 4: Calculate N
-
-Calculating n requires us to know the variance. In this case, we will have a binomial variable (they either respond to the email or don't) and thus the variance, can be calculated with a standard formula: $n\bullet p\bullet(1-p)$ however, this also requires knowledge of p, the probability of response from the updated template. After conducting a limited sample however, we can extrapolate more and detemine if we have sufficient evidence or not.
 
 
-...So, after an initial trial of 35 individuals, you have a total of 2 responses. 
 
-Is this sufficient evidence to refute the null hypothesis stated above?
+    279.6667468021971
+
+
+
+## Step 4: Plot Power Curves for Alternative Experiment Formulations
+
+While you now know how many observations you need in order to run a t-test for the given formulation above, its worth exploring what sample sizes would be required for alternative test formulations. For example, how much does the required sample size increase if you put a more stringent criteria of $\alpha=.01$? Or what is the sample size required to detect a .03 response rate difference at the same $\alpha$ and power thresholds? To investigate this, plot power vs sample size curves for alpha values of .01, .05 and .1 along with varying response rate differences of .005, .01, .02 and .03.
 
 
 ```python
-#Your code for testing the null hypothesis here
+#Your code; plot power curves for the various alpha and effect size combinations
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+sns.set_style('darkgrid')
+%matplotlib inline
+
+
+sd = 0.0475
+e_sizes = [mu_delta/sd for mu_delta in [.005,.01,.02,.03]]
+fig, axes = plt.subplots(ncols=1, nrows=3, figsize=(8,15))
+for n, alpha in enumerate([.01, .05, .1]):
+    ax = axes[n]
+    power_analysis.plot_power(dep_var="nobs",
+                              nobs = np.array(range(5,500)),
+                              effect_size=e_sizes,
+                              alpha=alpha,
+                              ax=ax)
+    ax.set_title('Power of Test for alpha = {}'.format(alpha))
+    ax.set_xticks(list(range(0,500,25)))
+    ax.set_yticks(np.linspace(0,1,11))
 ```
 
-### Your answer here: is there sufficient data to refute the null hypothesis? [Yes/No]
+
+![png](index_files/index_7_0.png)
 
 
-## Experimenting With New Test Designs
-If we relax alpha and beta to .05, each (opening ourselves up to a higher probability of making type I and type II errors), how much would our required sample size drop?
+# Step 5: Propose a Final Experimental Design
 
+Finally, now that you've explored some of the various sample sizes required for statistical tests of varying power, effect size and type I errors, propose an experimental designs to pitch to your boss and some of the accompanying advantages or disadvantages.
 
-```python
-#Your code here
-```
+### Your answer here
 
-### Your answer here: how much would required sample size drop based on the new formulation?
+Answers will vary. It seems that a minimum sample size 100, to detect all but the largest effect sizes with a reasonable balance of alpha and power. After the initial roll-out, there should be sufficient evidence to determine whether further investigation is warranted.
 
 
 ## Summary
