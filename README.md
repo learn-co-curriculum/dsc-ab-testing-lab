@@ -20,13 +20,13 @@ You've been tasked with designing an experiment to test whether a new email temp
 
 State your null hypothesis here (be sure to make it quantitative as before)
 
-h_0 : 
+h_0 : ** the probability of success for the new email template is .05**
 
 ## Step 2: State the Alternative Hypothesis, $H_1$
 
 State your alternative hypothesis here (be sure to make it quantitative as before)
 
-h_1 : 
+h_1 : **the probability of success for the new email template is >= .06**
 
 ## Step 3: Calculate n for standard alpha and power thresholds
 
@@ -38,8 +38,6 @@ To start, arbitrarily set alpha to 0.05. From this, calculate the required sampl
 
 ```python
 # Calculate the required sample size 
-import warnings
-warnings.filterwarnings("ignore")
 from statsmodels.stats.power import TTestIndPower, TTestPower
 power_analysis = TTestIndPower()
 mean_difference = 0.01
