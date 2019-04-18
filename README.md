@@ -97,4 +97,4 @@ Answers will vary. It seems that a minimum sample size 100, to detect all but th
 
 ## Summary
 
-In this lab, you practiced designing an intial experiment and then refined the parameters of the experiment based on an initial sample to determine feasability.
+In this lab, you practiced designing an initial experiment and then refined the parameters of the experiment based on an initial sample to determine feasibility.
