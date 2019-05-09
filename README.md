@@ -86,7 +86,7 @@ for n, alpha in enumerate([.01, .05, .1]):
 ![png](index_files/index_7_0.png)
 
 
-# Step 5: Propose a Final Experimental Design
+## Step 5: Propose a Final Experimental Design
 
 Finally, now that you've explored some of the various sample sizes required for statistical tests of varying power, effect size and type I errors, propose an experimental design to pitch to your boss and some of the accompanying advantages or disadvantages with it.
 
