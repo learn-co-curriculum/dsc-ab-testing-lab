@@ -49,7 +49,7 @@ While you now know how many observations you need in order to run a t-test for t
 #Your code; plot power curves for the various alpha and effect size combinations
 ```
 
-# Step 5: Propose a Final Experimental Design
+## Step 5: Propose a Final Experimental Design
 
 Finally, now that you've explored some of the various sample sizes required for statistical tests of varying power, effect size and type I errors, propose an experimental design to pitch to your boss and some of the accompanying advantages or disadvantages with it.
 
