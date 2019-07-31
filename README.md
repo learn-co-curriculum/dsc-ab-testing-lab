@@ -40,6 +40,25 @@ To start, arbitrarily set alpha to 0.05. From this, calculate the required sampl
 # Calculate the required sample size
 ```
 
+
+```python
+# __SOLUTION__ 
+# Calculate the required sample size 
+from statsmodels.stats.power import TTestIndPower, TTestPower
+power_analysis = TTestIndPower()
+mean_difference = 0.01
+sd =0.0475
+effect_size = mean_difference / sd
+power_analysis.solve_power(alpha=.05, effect_size=effect_size, power=.80, alternative='larger')
+```
+
+
+
+
+    279.6667468021971
+
+
+
 ## Step 4: Plot Power Curves for Alternative Experiment Formulations
 
 While you now know how many observations you need in order to run a t-test for the given formulation above, its worth exploring what sample sizes would be required for alternative test formulations. For example, how much does the required sample size increase if you put the more stringent criteria of $\alpha=.01$? Or what is the sample size required to detect a .03 response rate difference at the same $\alpha$ and power thresholds? To investigate this, plot power vs sample size curves for alpha values of .01, .05 and .1 along with varying response rate differences of .005, .01, .02 and .03.
@@ -48,6 +67,36 @@ While you now know how many observations you need in order to run a t-test for t
 ```python
 #Your code; plot power curves for the various alpha and effect size combinations
 ```
+
+
+```python
+# __SOLUTION__ 
+#Your code; plot power curves for the various alpha and effect size combinations
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+sns.set_style('darkgrid')
+%matplotlib inline
+
+
+sd = 0.0475
+e_sizes = [mu_delta/sd for mu_delta in [.005,.01,.02,.03]]
+fig, axes = plt.subplots(ncols=1, nrows=3, figsize=(8,15))
+for n, alpha in enumerate([.01, .05, .1]):
+    ax = axes[n]
+    power_analysis.plot_power(dep_var="nobs",
+                              nobs = np.array(range(5,500)),
+                              effect_size=e_sizes,
+                              alpha=alpha,
+                              ax=ax)
+    ax.set_title('Power of Test for alpha = {}'.format(alpha))
+    ax.set_xticks(list(range(0,500,25)))
+    ax.set_yticks(np.linspace(0,1,11))
+```
+
+
+![png](index_files/index_9_0.png)
+
 
 ## Step 5: Propose a Final Experimental Design
 
