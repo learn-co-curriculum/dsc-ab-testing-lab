@@ -20,13 +20,31 @@ You've been tasked with designing an experiment to test whether a new email temp
 
 State your null hypothesis here (be sure to make it quantitative as before)
 
-h_0 : #Your null hypothesis
+
+```python
+# h_0 = Your null hypothesis
+```
+
+
+```python
+# __SOLUTION__
+# h_0 = the probability of success for the new email template is .05
+```
 
 ## Step 2: State the Alternative Hypothesis, $H_1$
 
 State your alternative hypothesis here (be sure to make it quantitative as before)
 
-h_1 : #Your alternative hypothesis
+
+```python
+# h_1 = Your alternative hypothesis
+```
+
+
+```python
+# __SOLUTION__
+# h_1 = the probability of success for the new email template is >= .06
+```
 
 ## Step 3: Calculate n for standard alpha and power thresholds
 
@@ -95,7 +113,7 @@ for n, alpha in enumerate([.01, .05, .1]):
 ```
 
 
-![png](index_files/index_9_0.png)
+![png](index_files/index_13_0.png)
 
 
 ## Step 5: Propose a Final Experimental Design
@@ -103,6 +121,22 @@ for n, alpha in enumerate([.01, .05, .1]):
 Finally, now that you've explored some of the various sample sizes required for statistical tests of varying power, effect size and type I errors, propose an experimental design to pitch to your boss and some of the accompanying advantages or disadvantages with it.
 
 ### Your answer here
+
+
+```python
+
+```
+
+
+```python
+# __SOLUTION__
+"""
+Answers will vary. It seems that a minimum sample size 100, 
+to detect all but the largest effect sizes with a reasonable balance of alpha and power. 
+After the initial roll-out, there should be sufficient evidence to determine whether 
+further investigation is warranted.
+"""
+```
 
 ## Summary
 
