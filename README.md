@@ -20,13 +20,19 @@ You've been tasked with designing an experiment to test whether a new email temp
 
 State your null hypothesis here (be sure to make it quantitative as before)
 
-h_0 : #Your null hypothesis
+
+```python
+# h_0 = Your null hypothesis
+```
 
 ## Step 2: State the Alternative Hypothesis, $H_1$
 
 State your alternative hypothesis here (be sure to make it quantitative as before)
 
-h_1 : #Your alternative hypothesis
+
+```python
+# h_1 = Your alternative hypothesis
+```
 
 ## Step 3: Calculate n for standard alpha and power thresholds
 
@@ -54,6 +60,11 @@ While you now know how many observations you need in order to run a t-test for t
 Finally, now that you've explored some of the various sample sizes required for statistical tests of varying power, effect size and type I errors, propose an experimental design to pitch to your boss and some of the accompanying advantages or disadvantages with it.
 
 ### Your answer here
+
+
+```python
+
+```
 
 ## Summary
 
