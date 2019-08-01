@@ -3,7 +3,7 @@
 
 ## Introduction
 
-In this lab, you'll go through the process of designing an experiment.
+In this lab, you'll go through a the process of designing an experiment.
 
 ## Objectives
 You will be able to:
@@ -20,13 +20,19 @@ You've been tasked with designing an experiment to test whether a new email temp
 
 State your null hypothesis here (be sure to make it quantitative as before)
 
-h_0 : ** the probability of success for the new email template is .05**
+
+```python
+# h_0 = the probability of success for the new email template is .05
+```
 
 ## Step 2: State the Alternative Hypothesis, $H_1$
 
 State your alternative hypothesis here (be sure to make it quantitative as before)
 
-h_1 : **the probability of success for the new email template is >= .06**
+
+```python
+# h_1 = the probability of success for the new email template is >= .06
+```
 
 ## Step 3: Calculate n for standard alpha and power thresholds
 
@@ -55,7 +61,7 @@ power_analysis.solve_power(alpha=.05, effect_size=effect_size, power=.80, altern
 
 ## Step 4: Plot Power Curves for Alternative Experiment Formulations
 
-While you now know how many observations you need in order to run a t-test for the given formulation above, it's worth exploring what sample sizes would be required for alternative test formulations. For example, how much does the required sample size increase if you put the more stringent criteria of $\alpha=.01$? Or what is the sample size required to detect a .03 response rate difference at the same $\alpha$ and power thresholds? To investigate this, plot power vs sample size curves for alpha values of .01, .05 and .1 along with varying response rate differences of .005, .01, .02 and .03.
+While you now know how many observations you need in order to run a t-test for the given formulation above, its worth exploring what sample sizes would be required for alternative test formulations. For example, how much does the required sample size increase if you put the more stringent criteria of $\alpha=.01$? Or what is the sample size required to detect a .03 response rate difference at the same $\alpha$ and power thresholds? To investigate this, plot power vs sample size curves for alpha values of .01, .05 and .1 along with varying response rate differences of .005, .01, .02 and .03.
 
 
 ```python
@@ -83,7 +89,7 @@ for n, alpha in enumerate([.01, .05, .1]):
 ```
 
 
-![png](index_files/index_7_0.png)
+![png](index_files/index_9_0.png)
 
 
 ## Step 5: Propose a Final Experimental Design
@@ -92,8 +98,15 @@ Finally, now that you've explored some of the various sample sizes required for 
 
 ### Your answer here
 
-Answers will vary. It seems that a minimum sample size 100, to detect all but the largest effect sizes with a reasonable balance of alpha and power. After the initial roll-out, there should be sufficient evidence to determine whether further investigation is warranted.
 
+```python
+"""
+Answers will vary. It seems that a minimum sample size 100, 
+to detect all but the largest effect sizes with a reasonable balance of alpha and power. 
+After the initial roll-out, there should be sufficient evidence to determine whether 
+further investigation is warranted.
+"""
+```
 
 ## Summary
 
