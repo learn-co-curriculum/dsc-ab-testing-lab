@@ -22,7 +22,7 @@ State your null hypothesis here (be sure to make it quantitative as before)
 
 
 ```python
-# h_0 = Your null hypothesis
+# H_0 = Your null hypothesis
 ```
 
 ## Step 2: State the Alternative Hypothesis, $H_1$
@@ -31,13 +31,13 @@ State your alternative hypothesis here (be sure to make it quantitative as befor
 
 
 ```python
-# h_1 = Your alternative hypothesis
+# H_1 = Your alternative hypothesis
 ```
 
 ## Step 3: Calculate n for standard alpha and power thresholds
 
-Now define what alpha and beta you believe might be appropriate for this scenario.
-To start, arbitrarily set alpha to 0.05. From this, calculate the required sample size to detect a .01 response rate difference at a power of .8.
+Now define what $\alpha$ and $\beta$ you believe might be appropriate for this scenario.
+To start, arbitrarily set $\alpha$ to 0.05. From this, calculate the required sample size to detect a .01 response rate difference at a power of .8.
 
 > Note: Be sure to calculate a normalized effect size using Cohen's d from the raw response rate difference.
 
