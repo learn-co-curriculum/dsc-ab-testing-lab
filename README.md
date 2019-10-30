@@ -22,13 +22,13 @@ State your null hypothesis here (be sure to make it quantitative as before)
 
 
 ```python
-# h_0 = Your null hypothesis
+# H_0 = Your null hypothesis
 ```
 
 
 ```python
 # __SOLUTION__
-# h_0 = the probability of success for the new email template is .05
+# H_0 = the probability of success for the new email template is .05
 ```
 
 ## Step 2: State the Alternative Hypothesis, $H_1$
@@ -37,19 +37,19 @@ State your alternative hypothesis here (be sure to make it quantitative as befor
 
 
 ```python
-# h_1 = Your alternative hypothesis
+# H_1 = Your alternative hypothesis
 ```
 
 
 ```python
 # __SOLUTION__
-# h_1 = the probability of success for the new email template is >= .06
+# H_1 = the probability of success for the new email template is >= .06
 ```
 
 ## Step 3: Calculate n for standard alpha and power thresholds
 
-Now define what alpha and beta you believe might be appropriate for this scenario.
-To start, arbitrarily set alpha to 0.05. From this, calculate the required sample size to detect a .01 response rate difference at a power of .8.
+Now define what $\alpha$ and $\beta$ you believe might be appropriate for this scenario.
+To start, arbitrarily set $\alpha$ to 0.05. From this, calculate the required sample size to detect a .01 response rate difference at a power of .8.
 
 > Note: Be sure to calculate a normalized effect size using Cohen's d from the raw response rate difference.
 
@@ -65,7 +65,7 @@ To start, arbitrarily set alpha to 0.05. From this, calculate the required sampl
 from statsmodels.stats.power import TTestIndPower, TTestPower
 power_analysis = TTestIndPower()
 mean_difference = 0.01
-sd =0.0475
+sd = 0.0475
 effect_size = mean_difference / sd
 power_analysis.solve_power(alpha=.05, effect_size=effect_size, power=.80, alternative='larger')
 ```
