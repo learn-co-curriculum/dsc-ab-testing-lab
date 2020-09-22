@@ -26,11 +26,6 @@ State your null hypothesis here (be sure to make it quantitative as before)
 ```
 
 
-```python
-# __SOLUTION__
-# H_0 = the probability of success for the new email template is .05
-```
-
 ## Step 2: State the Alternative Hypothesis, $H_1$
 
 State your alternative hypothesis here (be sure to make it quantitative as before)
@@ -40,11 +35,6 @@ State your alternative hypothesis here (be sure to make it quantitative as befor
 # H_1 = Your alternative hypothesis
 ```
 
-
-```python
-# __SOLUTION__
-# H_1 = the probability of success for the new email template is >= .06
-```
 
 ## Step 3: Calculate n for standard alpha and power thresholds
 
@@ -81,10 +71,6 @@ power_analysis.solve_power(alpha=.05, effect_size=effect_size, power=.80, altern
 
 While you now know how many observations you need in order to run a t-test for the given formulation above, it is worth exploring what sample sizes would be required for alternative test formulations. For example, how much does the required sample size increase if you put the more stringent criteria of $\alpha=.01$? Or what is the sample size required to detect a .03 response rate difference at the same $\alpha$ and power thresholds? To investigate this, plot power vs sample size curves for alpha values of .01, .05 and .1 along with varying response rate differences of .005, .01, .02 and .03.
 
-
-```python
-#Your code; plot power curves for the various alpha and effect size combinations
-```
 
 
 ```python
@@ -127,16 +113,6 @@ Finally, now that you've explored some of the various sample sizes required for 
 
 ```
 
-
-```python
-# __SOLUTION__
-"""
-Answers will vary. It seems that a minimum sample size 100, 
-to detect all but the largest effect sizes with a reasonable balance of alpha and power. 
-After the initial roll-out, there should be sufficient evidence to determine whether 
-further investigation is warranted.
-"""
-```
 
 ## Summary
 
