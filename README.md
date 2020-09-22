@@ -13,7 +13,7 @@ You will be able to:
 
 ## The Scenario
 
-You've been tasked with designing an experiment to test whether a new email template will be more effective for your company's marketing team. The current template has a 5% response rate (with standard deviation .0475), which has outperformed numerous other templates in the past. The company is excited to test the new design that was developed internally but nervous about losing sales if it is not to work out. As a result, they are looking to determine how many individuals they will need to serve the new email template in order to detect a 1% performance increase (or decrease).
+You've been tasked with designing an experiment to test whether a new email template will be more effective for your company's marketing team. The current template has a 5% response rate (with standard deviation .0475), which has outperformed numerous other templates in the past. The company is excited to test the new design that was developed internally but nervous about losing sales if it is not to work out. As a result, they are looking to determine how many individuals they will need to serve the new email template in order to detect a 1% performance increase.
 
 
 ## Step 1: State the Null Hypothesis, $H_0$
@@ -44,7 +44,20 @@ To start, arbitrarily set $\alpha$ to 0.05. From this, calculate the required sa
 
 ```python
 # Calculate the required sample size
+from statsmodels.stats.power import TTestIndPower, TTestPower
+power_analysis = TTestIndPower()
+mean_difference = 0.01
+sd = 0.0475
+effect_size = mean_difference / sd
+power_analysis.solve_power(alpha=.05, effect_size=effect_size, power=.80, alternative='larger')
 ```
+
+
+
+
+    279.6667468021971
+
+
 
 ## Step 4: Plot Power Curves for Alternative Experiment Formulations
 
@@ -53,7 +66,37 @@ While you now know how many observations you need in order to run a t-test for t
 
 ```python
 #Your code; plot power curves for the various alpha and effect size combinations
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+sns.set_style('darkgrid')
+%matplotlib inline
+
+
+sd = 0.0475
+e_sizes = [mu_delta/sd for mu_delta in [.005,.01,.02,.03]]
+fig, axes = plt.subplots(ncols=1, nrows=3, figsize=(8,15))
+for n, alpha in enumerate([.01, .05, .1]):
+    print(type(n), alpha)
+    ax = axes[n]
+    power_analysis.plot_power(dep_var="nobs",
+                              nobs = np.array(range(5,500)),
+                              effect_size=e_sizes,
+                              alpha=alpha,
+                              ax=ax)
+    ax.set_title('Power of Test for alpha = {}'.format(alpha))
+    ax.set_xticks(list(range(0,500,25)))
+    ax.set_yticks(np.linspace(0,1,11))
 ```
+
+    <class 'int'> 0.01
+    <class 'int'> 0.05
+    <class 'int'> 0.1
+
+
+
+![svg](index_files/index_9_1.svg)
+
 
 ## Step 5: Propose a Final Experimental Design
 
@@ -65,6 +108,33 @@ Finally, now that you've explored some of the various sample sizes required for 
 ```python
 
 ```
+
+
+```python
+lets = {"a":"aye", 'b':'bee', "c":"see"}
+for i, let in enumerate(lets):
+    print(i, let)
+    for n, y in let:
+        print("     ", n, y)
+```
+
+    0 a
+
+
+
+    ---------------------------------------------------------------------------
+
+    ValueError                                Traceback (most recent call last)
+
+    <ipython-input-11-d71eac7bc13d> in <module>
+          2 for i, let in enumerate(lets):
+          3     print(i, let)
+    ----> 4     for n, y in let:
+          5         print("     ", n, y)
+
+
+    ValueError: not enough values to unpack (expected 2, got 1)
+
 
 ## Summary
 
