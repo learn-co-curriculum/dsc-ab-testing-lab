@@ -25,6 +25,12 @@ State your null hypothesis here (be sure to make it quantitative as before)
 # H_0 = Your null hypothesis
 ```
 
+
+```python
+# __SOLUTION__
+# H_0 = the probability of success for the new email template is .05
+```
+
 ## Step 2: State the Alternative Hypothesis, $H_1$
 
 State your alternative hypothesis here (be sure to make it quantitative as before)
@@ -32,6 +38,12 @@ State your alternative hypothesis here (be sure to make it quantitative as befor
 
 ```python
 # H_1 = Your alternative hypothesis
+```
+
+
+```python
+# __SOLUTION__
+# H_1 = the probability of success for the new email template is >= .06
 ```
 
 ## Step 3: Calculate n for standard alpha and power thresholds
@@ -44,6 +56,11 @@ To start, arbitrarily set $\alpha$ to 0.05. From this, calculate the required sa
 
 ```python
 # Calculate the required sample size
+```
+
+
+```python
+#__SOLUTION__
 from statsmodels.stats.power import TTestIndPower, TTestPower
 power_analysis = TTestIndPower()
 mean_difference = 0.01
@@ -52,19 +69,18 @@ effect_size = mean_difference / sd
 power_analysis.solve_power(alpha=.05, effect_size=effect_size, power=.80, alternative='larger')
 ```
 
-
-
-
-    279.6667468021971
-
-
-
 ## Step 4: Plot Power Curves for Alternative Experiment Formulations
 
 While you now know how many observations you need in order to run a t-test for the given formulation above, it is worth exploring what sample sizes would be required for alternative test formulations. For example, how much does the required sample size increase if you put the more stringent criteria of $\alpha=.01$? Or what is the sample size required to detect a .03 response rate difference at the same $\alpha$ and power thresholds? To investigate this, plot power vs sample size curves for alpha values of .01, .05 and .1 along with varying response rate differences of .005, .01, .02 and .03.
 
 
 ```python
+#Your code; plot power curves for the various alpha and effect size combinations
+```
+
+
+```python
+#__SOLUTION__
 #Your code; plot power curves for the various alpha and effect size combinations
 import numpy as np
 import matplotlib.pyplot as plt
@@ -89,15 +105,6 @@ for n, alpha in enumerate([.01, .05, .1]):
     ax.set_yticks(np.linspace(0,1,11))
 ```
 
-    <class 'int'> 0.01
-    <class 'int'> 0.05
-    <class 'int'> 0.1
-
-
-
-![svg](index_files/index_9_1.svg)
-
-
 ## Step 5: Propose a Final Experimental Design
 
 Finally, now that you've explored some of the various sample sizes required for statistical tests of varying power, effect size and type I errors, propose an experimental design to pitch to your boss and some of the accompanying advantages or disadvantages with it.
@@ -111,30 +118,14 @@ Finally, now that you've explored some of the various sample sizes required for 
 
 
 ```python
-lets = {"a":"aye", 'b':'bee', "c":"see"}
-for i, let in enumerate(lets):
-    print(i, let)
-    for n, y in let:
-        print("     ", n, y)
+# __SOLUTION__
+"""
+Answers will vary. It seems that a minimum sample size 100, 
+to detect all but the largest effect sizes with a reasonable balance of alpha and power. 
+After the initial roll-out, there should be sufficient evidence to determine whether 
+further investigation is warranted.
+"""
 ```
-
-    0 a
-
-
-
-    ---------------------------------------------------------------------------
-
-    ValueError                                Traceback (most recent call last)
-
-    <ipython-input-11-d71eac7bc13d> in <module>
-          2 for i, let in enumerate(lets):
-          3     print(i, let)
-    ----> 4     for n, y in let:
-          5         print("     ", n, y)
-
-
-    ValueError: not enough values to unpack (expected 2, got 1)
-
 
 ## Summary
 
