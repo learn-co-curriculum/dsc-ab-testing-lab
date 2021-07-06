@@ -1,4 +1,3 @@
-
 # A/B Testing - Lab
 
 ## Introduction
@@ -28,7 +27,7 @@ State your null hypothesis here (be sure to make it quantitative as before)
 
 ```python
 # __SOLUTION__
-# H_0 = the probability of success for the new email template is .05
+# H_0 = the probability of success for the new email template is < 0.06
 ```
 
 ## Step 2: State the Alternative Hypothesis, $H_1$
@@ -43,7 +42,7 @@ State your alternative hypothesis here (be sure to make it quantitative as befor
 
 ```python
 # __SOLUTION__
-# H_1 = the probability of success for the new email template is >= .06
+# H_1 = the probability of success for the new email template is >= 0.06
 ```
 
 ## Step 3: Calculate n for standard alpha and power thresholds
@@ -68,6 +67,13 @@ sd = 0.0475
 effect_size = mean_difference / sd
 power_analysis.solve_power(alpha=.05, effect_size=effect_size, power=.80, alternative='larger')
 ```
+
+
+
+
+    279.6667468021971
+
+
 
 ## Step 4: Plot Power Curves for Alternative Experiment Formulations
 
@@ -99,11 +105,21 @@ for n, alpha in enumerate([.01, .05, .1]):
                               nobs = np.array(range(5,500)),
                               effect_size=e_sizes,
                               alpha=alpha,
-                              ax=ax)
+                              ax=ax, 
+                              alternative='larger')
     ax.set_title('Power of Test for alpha = {}'.format(alpha))
     ax.set_xticks(list(range(0,500,25)))
     ax.set_yticks(np.linspace(0,1,11))
 ```
+
+    <class 'int'> 0.01
+    <class 'int'> 0.05
+    <class 'int'> 0.1
+
+
+
+![png](index_files/index_13_1.png)
+
 
 ## Step 5: Propose a Final Experimental Design
 
